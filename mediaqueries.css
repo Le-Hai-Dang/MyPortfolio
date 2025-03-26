@@ -100,4 +100,16 @@
   .text-container {
     text-align: justify;
   }
+  
+  #projects {
+    margin-top: 6rem !important;
+    padding-top: 3rem !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #projects {
+    margin-top: 8rem !important;
+    padding-top: 4rem !important;
+  }
 }
