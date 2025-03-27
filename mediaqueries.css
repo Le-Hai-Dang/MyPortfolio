@@ -1,7 +1,7 @@
 @media screen and (max-width: 1400px) {
   #profile {
-    height: 83vh;
-    margin-bottom: 6rem;
+    height: auto;
+    margin-bottom: 3rem;
   }
   .about-containers {
     flex-wrap: wrap;
@@ -18,10 +18,17 @@
   }
   #hamburger-nav {
     display: flex;
+    z-index: 1000;
+  }
+  .hamburger-menu {
+    z-index: 1000;
+  }
+  .menu-links {
+    z-index: 1000;
   }
   #experience,
   .experience-details-container {
-    margin-top: 2rem;
+    margin-top: 1.5rem;
   }
   #profile,
   .section-container {
@@ -35,12 +42,16 @@
     height: fit-content;
   }
   section {
-    margin: 0 5%;
+    margin: 0 4%;
   }
   .section__pic-container {
-    width: 275px;
-    height: 275px;
-    margin: 0 auto 2rem;
+    width: 100%;
+    height: auto;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
   }
   .about-containers {
     margin-top: 0;
@@ -50,18 +61,21 @@
 @media screen and (max-width: 600px) {
   #contact,
   footer {
-    height: 40vh;
+    height: auto;
+    min-height: 40vh;
   }
   #profile {
-    height: 83vh;
+    height: auto;
     margin-bottom: 0;
+    padding-bottom: 1.5rem;
+    z-index: 1;
   }
   article {
     font-size: 1rem;
   }
   footer nav {
     height: fit-content;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
   .about-containers,
   .contact-info-upper-container,
@@ -83,13 +97,14 @@
   }
   .nav-links {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.4rem;
     text-align: center;
   }
   .section__pic-container {
-    width: auto;
-    height: 46vw;
+    width: 100%;
+    height: auto !important;
     justify-content: center;
+    margin-bottom: 1rem;
   }
   .section__text__p2 {
     font-size: 1.25rem;
@@ -102,14 +117,30 @@
   }
   
   #projects {
-    margin-top: 6rem !important;
-    padding-top: 3rem !important;
+    margin-top: 3rem !important;
+    padding-top: 2rem !important;
+  }
+  
+  .project-item, .project-card {
+    margin-bottom: 4rem !important;
   }
 }
 
 @media screen and (max-width: 480px) {
   #projects {
-    margin-top: 8rem !important;
-    padding-top: 4rem !important;
+    margin-top: 4rem !important;
+    padding-top: 2.5rem !important;
+  }
+  
+  #profile {
+    padding-top: 2rem;
+  }
+  
+  .section__pic-container {
+    margin-bottom: 0.75rem;
+  }
+  
+  .project-item, .project-card {
+    margin-bottom: 5rem !important;
   }
 }

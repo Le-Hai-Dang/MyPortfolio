@@ -1,57 +1,82 @@
 /* Custom styling for the projects section */
 
-/* Thêm khoảng cách giữa About Me và Experience */
+/* Ngăn cuộn ngang trong trang web */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+/* Tăng z-index cho menu hamburger */
+.menu-links {
+  z-index: 1000 !important; /* Đảm bảo menu hiển thị trên các phần tử khác */
+}
+
+/* Thêm khoảng cách giữa About Me và Experience - rút ngắn margin */
 #about {
-  margin-bottom: 6rem !important;
-  padding-bottom: 4rem !important;
+  margin-bottom: 3rem !important;
+  padding-bottom: 2rem !important;
+  margin-top: 3rem !important;
 }
 
 #experience {
-  margin-top: 6rem !important;
-  padding-top: 4rem !important;
+  margin-top: 3rem !important;
+  padding-top: 2rem !important;
 }
 
-/* Điều chỉnh khoảng cách trên thiết bị di động */
+/* Điều chỉnh khoảng cách trên thiết bị di động - giảm margin */
 @media screen and (max-width: 768px) {
   #about {
-    margin-bottom: 8rem !important;
-    padding-bottom: 4rem !important;
+    margin-bottom: 4rem !important;
+    padding-bottom: 2rem !important;
+    margin-top: 4rem !important;
   }
   
   #experience {
-    margin-top: 8rem !important;
-    padding-top: 4rem !important;
+    margin-top: 4rem !important;
+    padding-top: 2rem !important;
+  }
+  
+  /* Tăng khoảng cách giữa các project trên thiết bị di động */
+  .project-item, .project-card {
+    margin-bottom: 4rem !important;
   }
 }
 
 @media screen and (max-width: 480px) {
   #about {
-    margin-bottom: 10rem !important;
-    padding-bottom: 5rem !important;
+    margin-bottom: 5rem !important;
+    padding-bottom: 2rem !important;
+    margin-top: 5rem !important;
   }
   
   #experience {
-    margin-top: 10rem !important;
-    padding-top: 5rem !important;
+    margin-top: 5rem !important;
+    padding-top: 2rem !important;
+  }
+  
+  /* Tăng khoảng cách giữa các project trên điện thoại */
+  .project-item, .project-card {
+    margin-bottom: 5rem !important;
   }
 }
 
 #projects {
   height: auto !important;
-  min-height: 100vh;
-  padding-bottom: 5rem;
+  min-height: auto; /* Bỏ min-height 100vh */
+  padding-bottom: 3rem; /* Giảm padding */
   position: relative;
-  margin-top: 4rem !important;
-  padding-top: 4rem !important;
+  margin-top: 3rem !important; /* Giảm margin */
+  padding-top: 2rem !important; /* Giảm padding */
 }
 
 .projects-grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 3rem !important;
-  margin: 2rem 0;
-  padding-top: 2rem;
-  row-gap: 5rem !important;
+  gap: 2rem !important; /* Giảm gap */
+  margin: 1.5rem 0; /* Giảm margin */
+  padding-top: 1.5rem; /* Giảm padding */
+  row-gap: 3rem !important; /* Giảm row gap */
 }
 
 .project-card {
@@ -64,26 +89,31 @@
   background: rgb(250, 250, 250);
   height: 100%;
   transition: transform 0.3s ease;
-  margin-bottom: 3rem !important;
+  margin-bottom: 2rem !important; /* Giảm margin */
+  /* Đảm bảo hiển thị ngay lập tức */
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 .project-item {
-  margin-bottom: 5rem !important;
-  padding-bottom: 2rem !important;
+  margin-bottom: 3rem !important; /* Giảm margin */
+  padding-bottom: 1rem !important; /* Giảm padding */
 }
 
+/* Bỏ hiệu ứng hover 3D cho project card */
 .project-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) !important;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 .project-card .article-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 200px;
+  height: 180px; /* Giảm chiều cao */
   overflow: hidden;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem; /* Giảm margin */
 }
 
 .project-card .project-img {
@@ -95,7 +125,7 @@
 
 .project-card .project-title {
   font-size: 1.5rem;
-  margin: 1rem 0;
+  margin: 0.75rem 0; /* Giảm margin */
   text-align: center;
 }
 
@@ -107,19 +137,19 @@
 
 /* Thêm CSS mới để sửa trên tất cả các thiết bị */
 body #projects {
-  margin-top: 4rem !important;
-  padding-top: 4rem !important;
+  margin-top: 3rem !important; /* Giảm margin */
+  padding-top: 2rem !important; /* Giảm padding */
 }
 
 /* Fix cho tất cả các kích thước màn hình */
 @media screen and (min-width: 1px) {
   .project-item {
-    margin-bottom: 5rem !important;
+    margin-bottom: 3rem !important; /* Giảm margin */
   }
   
   #projects {
-    padding-top: 6rem !important;
-    margin-top: 6rem !important;
+    padding-top: 3rem !important; /* Giảm padding */
+    margin-top: 3rem !important; /* Giảm margin */
   }
 }
 
@@ -127,50 +157,50 @@ body #projects {
 @media screen and (max-width: 992px) {
   .projects-grid-container {
     grid-template-columns: repeat(2, 1fr);
-    gap: 3rem !important;
-    row-gap: 4rem !important;
+    gap: 2rem !important; /* Giảm gap */
+    row-gap: 3rem !important; /* Giảm row gap */
   }
   
   body #projects {
-    margin-top: 6rem !important;
-    padding-top: 4rem !important;
+    margin-top: 3rem !important; /* Giảm margin */
+    padding-top: 2rem !important; /* Giảm padding */
   }
   
   .project-item {
-    margin-bottom: 5rem !important;
+    margin-bottom: 3rem !important; /* Giảm margin */
   }
 }
 
 @media screen and (max-width: 768px) {
   .projects-grid-container {
     grid-template-columns: 1fr;
-    margin-top: 3rem;
-    gap: 5rem !important;
+    margin-top: 2rem; /* Giảm margin */
+    gap: 3rem !important; /* Giảm gap */
   }
   
   .project-card {
     max-width: 400px;
-    margin: 0 auto 5rem !important;
-    padding-bottom: 2rem !important;
+    margin: 0 auto 3rem !important; /* Giảm margin */
+    padding-bottom: 1rem !important; /* Giảm padding */
   }
 
   body #projects {
-    padding-bottom: 3rem;
-    padding-top: 6rem !important;
-    margin-top: 6rem !important;
+    padding-bottom: 2rem; /* Giảm padding */
+    padding-top: 3rem !important; /* Giảm padding */
+    margin-top: 3rem !important; /* Giảm margin */
   }
   
   body #projects .section__text__p1 {
-    margin-top: 3rem;
-    padding-top: 2rem;
+    margin-top: 2rem; /* Giảm margin */
+    padding-top: 1rem; /* Giảm padding */
   }
   
   body #projects .title {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem; /* Giảm margin */
   }
   
   .project-item {
-    margin-bottom: 6rem !important;
+    margin-bottom: 3rem !important; /* Giảm margin */
   }
   
   /* Thêm clearfix để giải quyết vấn đề float */
@@ -184,26 +214,688 @@ body #projects {
 /* Fix for extra small devices */
 @media screen and (max-width: 480px) {
   body #projects {
-    margin-top: 8rem !important;
-    padding-top: 6rem !important;
+    margin-top: 4rem !important; /* Giảm margin */
+    padding-top: 3rem !important; /* Giảm padding */
   }
   
   body .projects-grid-container {
-    margin-top: 4rem;
-    gap: 6rem !important;
+    margin-top: 2rem; /* Giảm margin */
+    gap: 3rem !important; /* Giảm gap */
   }
   
   body .project-card, .project-item {
-    margin-bottom: 6rem !important;
-    padding-bottom: 3rem !important;
+    margin-bottom: 3rem !important; /* Giảm margin */
+    padding-bottom: 1.5rem !important; /* Giảm padding */
   }
   
-  /* Thêm khoảng cách đặc biệt cho device nhỏ */
+  /* Thêm khoảng cách đặc biệt cho device nhỏ - giảm height */
   .project-item::after {
     content: "";
     display: block;
-    height: 4rem;
+    height: 2rem; /* Giảm height */
     width: 100%;
     clear: both;
+  }
+}
+
+/* Avatar list styling */
+.section__pic-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-main {
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1.5rem; /* Giảm margin */
+  border: 3px solid #fff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+  /* Đảm bảo avatar không vượt quá kích thước container cha */
+  max-width: 100%;
+}
+
+.avatar-list-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem; /* Giảm margin */
+}
+
+.avatar-list {
+  display: flex;
+  gap: 0.75rem; /* Giảm gap */
+  justify-content: center;
+  background-color: transparent;
+  padding: 0.6rem; /* Giảm padding */
+  border-radius: 2rem;
+  width: fit-content;
+  backdrop-filter: blur(5px);
+  /* Đảm bảo list có thể scroll nếu không đủ không gian */
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  /* Ẩn thanh cuộn nhưng vẫn cho phép scroll */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Ẩn thanh cuộn cho các trình duyệt Webkit */
+.avatar-list::-webkit-scrollbar {
+  display: none;
+}
+
+.avatar-item {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  background-color: #304144;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Đảm bảo avatar-item không co lại */
+  flex-shrink: 0;
+}
+
+.avatar-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.avatar-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-item.active {
+  border-color: #ffffff;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.avatar-item.active::before {
+  opacity: 1;
+}
+
+.avatar-item:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.avatar-item:hover::before {
+  opacity: 0.5;
+}
+
+.avatar-thumb {
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive styles for avatar list */
+@media screen and (max-width: 1200px) {
+  .avatar-main {
+    width: 275px;
+    height: 275px;
+    margin: 0 auto 1rem; /* Giảm margin */
+  }
+  
+  .avatar-list-container {
+    margin-top: 0.25rem; /* Giảm margin */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .avatar-main {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto 0.75rem; /* Giảm margin */
+  }
+  
+  .avatar-list {
+    padding: 0.5rem; /* Giảm padding */
+    gap: 0.5rem; /* Giảm gap */
+  }
+  
+  .avatar-item {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .avatar-main {
+    width: 220px;
+    height: 220px;
+  }
+  
+  .section__pic-container {
+    height: auto !important;
+    margin-bottom: 1rem; /* Giảm margin */
+  }
+  
+  .avatar-list-container {
+    width: 90%;
+    margin: 0 auto;
+  }
+  
+  .avatar-list {
+    padding: 0.4rem; /* Giảm padding */
+    gap: 0.4rem; /* Giảm gap */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .avatar-main {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .avatar-list {
+    padding: 0.3rem; /* Giảm padding */
+    gap: 0.3rem; /* Giảm gap */
+  }
+  
+  .avatar-item {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+  }
+}
+
+/* Animation khi vào trang - tăng tốc độ gấp đôi */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Lớp phủ khi load trang - giảm thời gian fadeOut và tăng tốc gradient */
+.intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background-size: 400% 400%;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: 
+    fadeOut 0.5s ease-in-out 1s forwards, /* giảm thời gian từ 1s xuống 0.5s và delay từ 2s xuống 1s */
+    gradientBG 5s ease infinite; /* giảm thời gian từ 10s xuống 5s */
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.intro-text {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 1rem;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-in-out 0.15s forwards; /* giảm từ 1s xuống 0.5s và delay từ 0.3s xuống 0.15s */
+}
+
+.intro-name {
+  font-size: 4rem;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(to right, #fff, #64f6ff, #fff);
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 1.5s linear infinite; /* giảm từ 3s xuống 1.5s */
+}
+
+/* Animation cho các phần chính - tăng tốc độ animation */
+/* Chỉ giữ lại cho phần hero section và contact */
+#profile .animate-fadeInUp.active {
+  animation: fadeInSkew 0.25s cubic-bezier(0.19, 1, 0.22, 1) forwards; /* giảm từ 0.5s xuống 0.25s */
+}
+
+#profile .animate-fadeInRight.active {
+  animation: fadeInRight 0.25s cubic-bezier(0.19, 1, 0.22, 1) forwards; /* giảm từ 0.5s xuống 0.25s */
+}
+
+#profile .animate-fadeInLeft.active {
+  animation: fadeInLeft 0.25s cubic-bezier(0.19, 1, 0.22, 1) forwards; /* giảm từ 0.5s xuống 0.25s */
+}
+
+#profile .animate-scale.active {
+  animation: scale 0.25s cubic-bezier(0.19, 1, 0.22, 1) forwards; /* giảm từ 0.5s xuống 0.25s */
+}
+
+#profile .animate-float.active {
+  animation: techFloat 2s ease-in-out infinite; /* giảm từ 4s xuống 2s */
+}
+
+#contact .animate-fadeInUp.active {
+  animation: fadeInSkew 0.25s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+/* Đảm bảo các phần tử trong About, Experience, Projects hiển thị mà không có animation */
+#about .details-container,
+#about .text-container,
+#experience .details-container,
+#experience .experience-sub-title,
+#projects .project-card {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+/* Thay đổi delay */
+.animate-delay-1 {
+  animation-delay: 1.15s !important; /* giảm từ 2.3s xuống 1.15s */
+}
+
+.animate-delay-2 {
+  animation-delay: 1.25s !important; /* giảm từ 2.5s xuống 1.25s */
+}
+
+.animate-delay-3 {
+  animation-delay: 1.35s !important; /* giảm từ 2.7s xuống 1.35s */
+}
+
+.animate-delay-4 {
+  animation-delay: 1.45s !important; /* giảm từ 2.9s xuống 1.45s */
+}
+
+.typing-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: 
+    typing 2.5s steps(30, end) 1.5s forwards, /* tăng từ 1s lên 2.5s */
+    blink .25s step-end infinite alternate; /* giảm từ 0.5s xuống 0.25s */
+  border-right: .1em solid #12c2e9;
+  width: 0;
+}
+
+/* Thêm hiệu ứng shimmer cho tiêu đề - tăng tốc */
+.title-shimmer {
+  background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+  background-size: 200% auto;
+  color: #000;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 1.5s linear infinite; /* giảm từ 3s xuống 1.5s */
+  text-shadow: 0 0 10px rgba(18, 194, 233, 0.2);
+  opacity: 1 !important; /* Đảm bảo tiêu đề luôn hiển thị */
+}
+
+/* Animation mới công nghệ cao - tăng tốc */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+    text-shadow: -2px 0 rgb(0, 200, 255), 2px 0 rgb(255, 0, 100);
+  }
+  10% {
+    transform: translate(-2px, 2px);
+    text-shadow: 2px -2px rgb(0, 200, 255), -2px 2px rgb(255, 0, 100);
+  }
+  20% {
+    transform: translate(2px, -2px);
+    text-shadow: -2px 0 rgb(0, 200, 255), 2px 0 rgb(255, 0, 100);
+  }
+  30% {
+    transform: translate(0);
+    text-shadow: 2px 2px rgb(0, 200, 255), -2px -2px rgb(255, 0, 100);
+  }
+  100% {
+    transform: translate(0);
+    text-shadow: -2px 0 rgb(0, 200, 255), 2px 0 rgb(255, 0, 100);
+  }
+}
+
+@keyframes techFloat {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    box-shadow: 0 5px 15px rgba(0, 150, 255, 0.3);
+  }
+  25% {
+    transform: translateY(-10px) rotate(1deg);
+    box-shadow: 0 15px 25px rgba(0, 150, 255, 0.4);
+  }
+  50% {
+    transform: translateY(-15px) rotate(0deg);
+    box-shadow: 0 20px 30px rgba(0, 150, 255, 0.5);
+  }
+  75% {
+    transform: translateY(-10px) rotate(-1deg);
+    box-shadow: 0 15px 25px rgba(0, 150, 255, 0.4);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+    box-shadow: 0 5px 15px rgba(0, 150, 255, 0.3);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 150, 255, 0.7);
+    transform: scale(1);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(0, 150, 255, 0);
+    transform: scale(1.05);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 150, 255, 0);
+    transform: scale(1);
+  }
+}
+
+@keyframes blurIn {
+  0% {
+    opacity: 0;
+    filter: blur(20px);
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}
+
+@keyframes futuristicSpin {
+  0% {
+    transform: perspective(1000px) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateY(360deg);
+  }
+}
+
+@keyframes fadeInSkew {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) skewX(15deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) skewX(0);
+  }
+}
+
+/* Hiệu ứng mới cho các phần tử - tăng tốc - chỉ giữ lại cho profile và contact */
+#profile .tech-glitch,
+#contact .tech-glitch {
+  animation: glitch 1s infinite alternate-reverse; /* giảm từ 2s xuống 1s */
+}
+
+#profile .tech-pulse,
+#contact .tech-pulse {
+  animation: pulse 1s infinite; /* giảm từ 2s xuống 1s */
+}
+
+#profile .tech-blur-in.active,
+#contact .tech-blur-in.active {
+  animation: blurIn 0.35s cubic-bezier(0.19, 1, 0.22, 1) forwards; /* giảm từ 0.7s xuống 0.35s */
+}
+
+#profile .tech-spin.active,
+#contact .tech-spin.active {
+  animation: futuristicSpin 0.75s ease-in-out; /* giảm từ 1.5s xuống 0.75s */
+}
+
+/* Animation nhanh cho nút shine */
+@keyframes shine {
+  to {
+    transform: translateX(50%);
+  }
+}
+
+.btn-color-1:hover:before {
+  animation: shine 0.35s forwards; /* giảm từ 0.7s xuống 0.35s */
+}
+
+/* Style mới cho các nút có hiệu ứng neon */
+.btn-color-1 {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-color-1:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.25), transparent 80%);
+  transform: translateX(-100%);
+  z-index: -1;
+}
+
+.btn-color-1:hover:before {
+  animation: shine 0.7s forwards;
+}
+
+/* Tăng cường ưu tiên cho khoảng cách giữa các project */
+.project-card.color-container.project-item {
+  margin-bottom: 2.5rem !important;
+}
+
+@media screen and (max-width: 768px) {
+  /* Tăng khoảng cách giữa các project trên thiết bị di động với mức ưu tiên cao hơn */
+  .project-card.color-container.project-item {
+    margin-bottom: 4rem !important;
+  }
+  
+  .projects-grid-container {
+    row-gap: 4rem !important;
+  }
+  
+  /* Đảm bảo khoảng cách dưới cùng của project */
+  .project-card {
+    margin-bottom: 4rem !important;
+  }
+  
+  .project-item {
+    margin-bottom: 4rem !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Tăng khoảng cách giữa các project trên điện thoại với mức ưu tiên cao nhất */
+  .project-card.color-container.project-item {
+    margin-bottom: 5rem !important;
+  }
+  
+  .projects-grid-container {
+    row-gap: 5rem !important;
+  }
+  
+  /* Đảm bảo khoảng cách dưới cùng của project */
+  .project-card {
+    margin-bottom: 5rem !important;
+  }
+  
+  .project-item {
+    margin-bottom: 5rem !important;
+  }
+  
+  /* Tăng khoảng cách sau mỗi dự án */
+  .project-item::after {
+    content: "";
+    display: block;
+    height: 3rem !important;
+    width: 100%;
+    clear: both;
+  }
+}
+
+/* Fix cho tất cả các kích thước màn hình - Tăng cường override */
+@media screen and (min-width: 1px) {
+  /* Đảm bảo projects-grid-container có đủ khoảng cách */
+  .projects-grid-container > div:not(:last-child) {
+    margin-bottom: 3rem;
+  }
+}
+
+/* Điều chỉnh thêm cho grid container */
+.projects-grid-container {
+  margin-bottom: 2rem;
+}
+
+/* Media queries for responsiveness - chỉnh sửa tăng cường */
+@media screen and (max-width: 992px) {
+  /* Tăng khoảng cách row-gap cho grid */
+  .projects-grid-container {
+    row-gap: 3rem !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* Tăng khoảng cách grid trên tablet */
+  .projects-grid-container {
+    row-gap: 4rem !important;
+    grid-gap: 4rem !important;
+  }
+  
+  /* Đảm bảo mỗi project card có margin-bottom */
+  .project-card {
+    max-width: 400px;
+    margin: 0 auto 4rem !important;
+  }
+  
+  /* Giữ khoảng cách giữa các project */
+  .project-item {
+    margin-bottom: 4rem !important;
+    padding-bottom: 1rem !important;
+  }
+}
+
+/* Fix for extra small devices - tăng cường */
+@media screen and (max-width: 480px) {
+  /* Tăng khoảng cách grid trên điện thoại */
+  body .projects-grid-container {
+    margin-top: 2rem;
+    row-gap: 5rem !important;
+    grid-gap: 5rem !important;
+  }
+  
+  /* Đảm bảo mỗi project card có margin-bottom */
+  body .project-card, 
+  body .project-item,
+  body .projects-grid-container .project-card,
+  body .projects-grid-container .project-item,
+  .project-card.color-container.project-item {
+    margin-bottom: 5rem !important;
+    padding-bottom: 2rem !important;
   }
 } 

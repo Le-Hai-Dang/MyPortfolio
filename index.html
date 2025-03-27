@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f2027" />
     <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="./mediaqueries.css" />
@@ -13,30 +14,91 @@
       /* CSS trực tiếp để sửa vấn đề hiển thị trên mobile */
       @media screen and (max-width: 768px) {
         #projects {
-          margin-top: 6rem !important;
-          padding-top: 3rem !important;
+          margin-top: 3rem !important;
+          padding-top: 2rem !important;
+        }
+        
+        /* Đảm bảo khoảng cách giữa các project */
+        .project-card, .project-item, .project-card.color-container.project-item {
+          margin-bottom: 4rem !important;
+          padding-bottom: 1rem !important;
+        }
+        
+        /* Tăng khoảng cách cho grid */
+        .projects-grid-container {
+          row-gap: 4rem !important;
+          grid-gap: 4rem !important;
         }
       }
       
       @media screen and (max-width: 480px) {
         #projects {
-          margin-top: 8rem !important;
-          padding-top: 4rem !important;
+          margin-top: 4rem !important;
+          padding-top: 2.5rem !important;
         }
         #projects .section__text__p1 {
-          padding-top: 2rem;
+          padding-top: 1rem;
         }
         section {
           height: auto !important;
+        }
+        
+        /* Đảm bảo khoảng cách giữa các project trên điện thoại */
+        .project-card, .project-item, .project-card.color-container.project-item, 
+        div.project-card.color-container.project-item[data-spacing="true"] {
+          margin-bottom: 5rem !important;
+          padding-bottom: 2rem !important;
+        }
+        
+        /* Tăng khoảng cách cho grid */
+        .projects-grid-container {
+          row-gap: 5rem !important;
+          grid-gap: 5rem !important;
+        }
+      }
+      
+      /* Đảm bảo z-index cho menu */
+      .hamburger-menu, .menu-links {
+        z-index: 2000 !important;
+      }
+      
+      .section__pic-container {
+        z-index: 1;
+      }
+      
+      /* Đảm bảo khoảng cách giữa các project trên tất cả các thiết bị */
+      .project-card, .project-item {
+        margin-bottom: 2.5rem !important;
+      }
+      
+      [data-spacing="true"] {
+        margin-bottom: 2.5rem !important;
+      }
+      
+      @media screen and (max-width: 768px) {
+        [data-spacing="true"] {
+          margin-bottom: 4rem !important;
+        }
+      }
+      
+      @media screen and (max-width: 480px) {
+        [data-spacing="true"] {
+          margin-bottom: 5rem !important;
         }
       }
     </style>
   </head>
   <body>
+    <!-- Intro Overlay - Hiệu ứng loading ấn tượng khi vào trang -->
+    <div class="intro-overlay">
+      <div class="intro-text">Chào mừng đến với Portfolio của</div>
+      <div class="intro-name">Le Hai Dang</div>
+    </div>
+
     <nav id="desktop-nav">
-      <div class="logo">Le Hai Dang</div>
+      <div class="logo animate-fadeInRight animate-delay-1">Le Hai Dang</div>
       <div>
-        <ul class="nav-links">
+        <ul class="nav-links animate-fadeInLeft animate-delay-1">
           <li><a href="#about">About</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#projects">Projects</a></li>
@@ -45,9 +107,9 @@
       </div>
     </nav>
     <nav id="hamburger-nav">
-      <div class="logo">Le Hai Dang</div>
+      <div class="logo animate-fadeInRight animate-delay-1">Le Hai Dang</div>
       <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
+        <div class="hamburger-icon animate-fadeInLeft animate-delay-1" onclick="toggleMenu()">
           <span></span>
           <span></span>
           <span></span>
@@ -62,19 +124,38 @@
     </nav>
     <section id="profile">
       <div class="section__pic-container">
-        <img src="./assets/avt-img.png" alt="Le Hai Dang profile picture" />
+        <img id="main-avatar" src="./assets/avt-img.png" alt="Le Hai Dang profile picture" class="avatar-main avatar-entrance animate-float" />
+        <div class="avatar-list-container animate-fadeInUp animate-delay-3">
+          <div class="avatar-list">
+            <div class="avatar-item active" data-img="./assets/avt-img.png">
+              <img src="./assets/avt-img.png" alt="Ảnh" class="avatar-thumb" />
+            </div>
+            <div class="avatar-item" data-img="./assets/anh1.jpg">
+              <img src="./assets/anh1.jpg" alt="Ảnh" class="avatar-thumb" />
+            </div>
+            <div class="avatar-item" data-img="./assets/anh2.jpg">
+              <img src="./assets/anh2.jpg" alt="Ảnh" class="avatar-thumb" />
+            </div>
+            <div class="avatar-item" data-img="./assets/anh3.jpg">
+              <img src="./assets/anh3.jpg" alt="Ảnh" class="avatar-thumb" />
+            </div>
+            <div class="avatar-item" data-img="./assets/anh4.jpg">
+              <img src="./assets/anh4.jpg" alt="Ảnh" class="avatar-thumb" />
+            </div>
+          </div>
+        </div>
       </div>
       <div class="section__text">
-        <p class="section__text__p1">Hello, I'm</p>
-        <h1 class="title">Le Hai Dang</h1>
-        <p class="section__text__p2">Web Developer</p>
-        <div class="btn-container">
+        <p class="section__text__p1 animate-fadeInUp animate-delay-2">Hello, I'm</p>
+        <h1 class="title title-shimmer" style="opacity: 1 !important;">Le Hai Dang</h1>
+        <p class="section__text__p2 typing-text">Web Developer</p>
+        <div class="btn-container animate-fadeInUp animate-delay-3">
          
           <button class="btn btn-color-1" onclick="location.href='./#contact'">
             Contact Info
           </button>
         </div>
-        <div id="socials-container">
+        <div id="socials-container" class="animate-fadeInUp animate-delay-4">
           <img
             src="./assets/email.png"
             alt="My Email profile"
@@ -90,7 +171,7 @@
         </div>
       </div>
     </section>
-    <section id="about" style="margin-bottom: 6rem; padding-bottom: 4rem;">
+    <section id="about" style="margin-bottom: 3rem; padding-bottom: 2rem; margin-top: 3rem;">
       <p class="section__text__p1">Get To Know More</p>
       <h1 class="title">About Me</h1>
       <div class="section-container">
@@ -103,7 +184,7 @@
                 class="icon"
               />
               <h3>Experience</h3>
-              <p>2 years <br />Web Development</p>
+              <p>1 years <br />Web Development</p>
             </div>
             <div class="details-container">
               <img
@@ -129,7 +210,7 @@
         onclick="location.href='./#experience'"
       />
     </section>
-    <section id="experience" style="margin-top: 6rem; padding-top: 4rem;">
+    <section id="experience" style="margin-top: 3rem; padding-top: 2rem;">
       <p class="section__text__p1">Explore My</p>
       <h1 class="title">Experience</h1>
       <div class="experience-details-container">
@@ -263,11 +344,11 @@
         onclick="location.href='./#projects'"
       />
     </section>
-    <section id="projects" style="padding-top: 6rem !important; margin-top: 6rem !important; height: auto !important;">
-      <p class="section__text__p1" style="padding-top: 2rem;">Browse My Recent</p>
-      <h1 class="title" style="margin-bottom: 3rem;">Projects</h1>
-      <div class="projects-grid-container" style="margin-top: 4rem;">
-        <div class="project-card color-container project-item" style="margin-bottom: 4rem !important;">
+    <section id="projects" style="padding-top: 3rem !important; margin-top: 3rem !important; height: auto !important;">
+      <p class="section__text__p1" style="padding-top: 1rem;">Browse My Recent</p>
+      <h1 class="title" style="margin-bottom: 2rem;">Projects</h1>
+      <div class="projects-grid-container" style="margin-top: 2rem;">
+        <div class="project-card color-container project-item" style="margin-bottom: 2.5rem !important;" data-spacing="true">
           <div class="article-container">
             <img
               src="./assets/health_plus.png"
@@ -285,7 +366,7 @@
             </button>
           </div>
         </div>
-        <div class="project-card color-container project-item" style="margin-bottom: 4rem !important;">
+        <div class="project-card color-container project-item" style="margin-bottom: 2.5rem !important;" data-spacing="true">
           <div class="article-container">
             <img
               src="./assets/DuyPQ.png"
@@ -303,7 +384,7 @@
             </button>
           </div>
         </div>
-        <div class="project-card color-container project-item" style="margin-bottom: 4rem !important;">
+        <div class="project-card color-container project-item" style="margin-bottom: 2.5rem !important;" data-spacing="true">
           <div class="article-container">
             <img
               src="./assets/Cham_toi_ban.png"
@@ -321,7 +402,7 @@
             </button>
           </div>
         </div>
-        <div class="project-card color-container project-item" style="margin-bottom: 4rem !important;">
+        <div class="project-card color-container project-item" style="margin-bottom: 2.5rem !important;" data-spacing="true">
           <div class="article-container">
             <img
               src="./assets/wellSafe.png"
@@ -345,7 +426,7 @@
         alt="Arrow icon"
         class="icon arrow"
         onclick="location.href='./#contact'"
-        style="margin-top: 2rem;"
+        style="margin-top: 1rem;"
       />
     </section>
     <section id="contact">
@@ -384,91 +465,324 @@
 
     </footer>
     <script src="script.js"></script>
+    <script src="animations.js"></script>
     <script>
       // JavaScript để điều chỉnh khoảng cách giữa các project
       document.addEventListener('DOMContentLoaded', function() {
-        // Thêm khoảng cách cho các project item
+        // Không cần chạy animation scroll ở đây vì đã xử lý trong animations.js
+        // Mã này được giữ lại nhưng không bổ sung thêm animation
+        
+        // Thêm khoảng cách cho các project item - ƯU TIÊN CAO HƠN BẰNG !important
         const projectItems = document.querySelectorAll('.project-item');
         projectItems.forEach(function(item) {
-          item.style.marginBottom = '4rem';
+          // Đặt khoảng cách mặc định
+          item.style.marginBottom = '2.5rem !important';
           
-          // Thêm khoảng cách lớn hơn trên màn hình nhỏ
+          // Thêm class để dễ dàng tham chiếu từ CSS
+          item.classList.add('spaced-project');
+          
+          // Thêm khoảng cách lớn hơn trên màn hình nhỏ với !important để ưu tiên cao hơn
           if (window.innerWidth <= 768) {
-            item.style.marginBottom = '6rem';
+            item.style.marginBottom = '4rem !important';
+            // Thêm thuộc tính inline style trực tiếp với !important
+            item.setAttribute('style', 'margin-bottom: 4rem !important; padding-bottom: 1rem !important;');
           }
           
-          // Thêm khoảng cách đặc biệt lớn trên điện thoại
+          // Thêm khoảng cách đặc biệt lớn trên điện thoại với mức ưu tiên cao nhất
           if (window.innerWidth <= 480) {
-            item.style.marginBottom = '8rem';
+            item.style.marginBottom = '5rem !important';
+            // Thêm thuộc tính inline style trực tiếp với !important
+            item.setAttribute('style', 'margin-bottom: 5rem !important; padding-bottom: 2rem !important;');
           }
         });
+        
+        // TĂNG KHOẢNG CÁCH CHO GRID CONTAINER
+        const projectsGridContainer = document.querySelector('.projects-grid-container');
+        if (projectsGridContainer) {
+          if (window.innerWidth <= 480) {
+            projectsGridContainer.style.rowGap = '5rem';
+            projectsGridContainer.style.gridGap = '5rem';
+          } else if (window.innerWidth <= 768) {
+            projectsGridContainer.style.rowGap = '4rem';
+            projectsGridContainer.style.gridGap = '4rem';
+          } else {
+            projectsGridContainer.style.rowGap = '3rem';
+          }
+        }
         
         // Đảm bảo section project có đủ chiều cao
         const projectsSection = document.getElementById('projects');
         projectsSection.style.height = 'auto';
-        projectsSection.style.minHeight = '100vh';
-        projectsSection.style.paddingTop = '6rem';
-        projectsSection.style.marginTop = '6rem';
+        projectsSection.style.minHeight = 'auto';
+        projectsSection.style.paddingTop = '3rem';
+        projectsSection.style.marginTop = '3rem';
         
         // Thêm khoảng cách giữa About Me và Experience
         const aboutSection = document.getElementById('about');
         const experienceSection = document.getElementById('experience');
         
         // Set khoảng cách mặc định
-        aboutSection.style.marginBottom = '6rem';
-        aboutSection.style.paddingBottom = '4rem';
-        experienceSection.style.marginTop = '6rem';
-        experienceSection.style.paddingTop = '4rem';
+        aboutSection.style.marginBottom = '3rem';
+        aboutSection.style.paddingBottom = '2rem';
+        aboutSection.style.marginTop = '3rem';
+        experienceSection.style.marginTop = '3rem';
+        experienceSection.style.paddingTop = '2rem';
         
         // Điều chỉnh khoảng cách dựa vào kích thước màn hình
-        if (window.innerWidth <= 768) {
-          aboutSection.style.marginBottom = '8rem';
-          experienceSection.style.marginTop = '8rem';
+        if (window.innerWidth <= 480) {
+          aboutSection.style.marginBottom = '5rem';
+          aboutSection.style.paddingBottom = '2rem';
+          aboutSection.style.marginTop = '5rem';
+          experienceSection.style.marginTop = '5rem';
+          experienceSection.style.paddingTop = '2rem';
+        } else if (window.innerWidth <= 768) {
+          aboutSection.style.marginBottom = '4rem';
+          aboutSection.style.paddingBottom = '2rem';
+          aboutSection.style.marginTop = '4rem';
+          experienceSection.style.marginTop = '4rem';
+          experienceSection.style.paddingTop = '2rem';
+        } else {
+          aboutSection.style.marginBottom = '3rem';
+          aboutSection.style.paddingBottom = '2rem';
+          aboutSection.style.marginTop = '3rem';
+          experienceSection.style.marginTop = '3rem';
+          experienceSection.style.paddingTop = '2rem';
         }
         
-        if (window.innerWidth <= 480) {
-          aboutSection.style.marginBottom = '10rem';
-          aboutSection.style.paddingBottom = '5rem';
-          experienceSection.style.marginTop = '10rem';
-          experienceSection.style.paddingTop = '5rem';
+        // Cải thiện responsive cho phần avatar
+        function updateAvatarLayout() {
+          const profileSection = document.getElementById('profile');
+          const picContainer = profileSection.querySelector('.section__pic-container');
+          const avatarMain = document.getElementById('main-avatar');
+          const avatarListContainer = document.querySelector('.avatar-list-container');
+          
+          // Đảm bảo các phần tử có đủ không gian trên điện thoại
+          if (window.innerWidth <= 480) {
+            profileSection.style.height = 'auto';
+            profileSection.style.paddingTop = '2rem';
+            profileSection.style.paddingBottom = '2rem';
+            
+            picContainer.style.height = 'auto';
+            picContainer.style.marginBottom = '1rem';
+            
+            avatarListContainer.style.width = '90%';
+          } else if (window.innerWidth <= 600) {
+            profileSection.style.height = 'auto';
+            profileSection.style.paddingBottom = '1.5rem';
+            
+            picContainer.style.height = 'auto';
+            picContainer.style.marginBottom = '1rem';
+          } else if (window.innerWidth <= 768) {
+            profileSection.style.height = 'auto';
+            picContainer.style.marginBottom = '1.5rem';
+          }
         }
+        
+        // Chạy một lần khi trang tải xong
+        updateAvatarLayout();
+        
+        // Avatar slideshow functionality
+        const mainAvatar = document.getElementById('main-avatar');
+        const avatarItems = document.querySelectorAll('.avatar-item');
+        let currentIndex = 0;
+        let slideInterval;
+        let userInteracted = false;
+        
+        // Function to change avatar
+        function changeAvatar(index) {
+          // Remove active class from all items
+          avatarItems.forEach(item => {
+            item.classList.remove('active');
+          });
+          
+          // Add active class to current item
+          avatarItems[index].classList.add('active');
+          
+          // Update main avatar image
+          const newImageSrc = avatarItems[index].getAttribute('data-img');
+          mainAvatar.src = newImageSrc;
+        }
+        
+        // Function to go to next avatar
+        function nextAvatar() {
+          currentIndex = (currentIndex + 1) % avatarItems.length;
+          changeAvatar(currentIndex);
+        }
+        
+        // Start slideshow
+        function startSlideshow() {
+          // Xóa interval hiện tại nếu có
+          if (slideInterval) {
+            clearInterval(slideInterval);
+          }
+          // Tạo interval mới - chỉnh về 1.5s (thay vì 0.75s)
+          slideInterval = setInterval(nextAvatar, 1500); // Change every 1.5 seconds
+        }
+        
+        // Stop slideshow
+        function stopSlideshow() {
+          if (slideInterval) {
+            clearInterval(slideInterval);
+            slideInterval = null;
+          }
+        }
+        
+        // Click handlers for avatar items
+        avatarItems.forEach((item, index) => {
+          item.addEventListener('click', function() {
+            // Đánh dấu là người dùng đã tương tác
+            userInteracted = true;
+            
+            // Dừng slideshow hiện tại
+            stopSlideshow();
+            
+            // Cập nhật index và thay đổi ảnh
+            currentIndex = index;
+            changeAvatar(currentIndex);
+            
+            // Khởi động lại slideshow sau một khoảng thời gian
+            setTimeout(function() {
+              if (userInteracted) {
+                userInteracted = false;
+                startSlideshow();
+              }
+            }, 1500); // Điều chỉnh từ 1000ms thành 1500ms để phù hợp với thời gian chuyển avatar
+          });
+        });
+        
+        // Start the slideshow initially
+        startSlideshow();
       });
       
       // Điều chỉnh lại khi cửa sổ thay đổi kích thước
       window.addEventListener('resize', function() {
         const projectItems = document.querySelectorAll('.project-item');
         projectItems.forEach(function(item) {
-          // Đặt lại khoảng cách dựa trên kích thước màn hình
+          // Đặt lại khoảng cách dựa trên kích thước màn hình với mức ưu tiên cao
           if (window.innerWidth <= 480) {
-            item.style.marginBottom = '8rem';
+            // Thêm thuộc tính inline style trực tiếp với !important
+            item.setAttribute('style', 'margin-bottom: 5rem !important; padding-bottom: 2rem !important;');
           } else if (window.innerWidth <= 768) {
-            item.style.marginBottom = '6rem';
+            // Thêm thuộc tính inline style trực tiếp với !important
+            item.setAttribute('style', 'margin-bottom: 4rem !important; padding-bottom: 1rem !important;');
           } else {
-            item.style.marginBottom = '4rem';
+            // Thêm thuộc tính inline style trực tiếp với !important
+            item.setAttribute('style', 'margin-bottom: 2.5rem !important;');
           }
         });
+        
+        // CẬP NHẬT KHOẢNG CÁCH CHO GRID CONTAINER
+        const projectsGridContainer = document.querySelector('.projects-grid-container');
+        if (projectsGridContainer) {
+          if (window.innerWidth <= 480) {
+            projectsGridContainer.style.rowGap = '5rem';
+            projectsGridContainer.style.gridGap = '5rem';
+          } else if (window.innerWidth <= 768) {
+            projectsGridContainer.style.rowGap = '4rem';
+            projectsGridContainer.style.gridGap = '4rem';
+          } else {
+            projectsGridContainer.style.rowGap = '3rem';
+          }
+        }
         
         // Cập nhật khoảng cách cho About và Experience
         const aboutSection = document.getElementById('about');
         const experienceSection = document.getElementById('experience');
         
         if (window.innerWidth <= 480) {
-          aboutSection.style.marginBottom = '10rem';
-          aboutSection.style.paddingBottom = '5rem';
-          experienceSection.style.marginTop = '10rem';
-          experienceSection.style.paddingTop = '5rem';
+          aboutSection.style.marginBottom = '5rem';
+          aboutSection.style.paddingBottom = '2rem';
+          experienceSection.style.marginTop = '5rem';
+          experienceSection.style.paddingTop = '2rem';
         } else if (window.innerWidth <= 768) {
-          aboutSection.style.marginBottom = '8rem';
-          aboutSection.style.paddingBottom = '4rem';
-          experienceSection.style.marginTop = '8rem';
-          experienceSection.style.paddingTop = '4rem';
+          aboutSection.style.marginBottom = '4rem';
+          aboutSection.style.paddingBottom = '2rem';
+          aboutSection.style.marginTop = '4rem';
+          experienceSection.style.marginTop = '4rem';
+          experienceSection.style.paddingTop = '2rem';
         } else {
-          aboutSection.style.marginBottom = '6rem';
-          aboutSection.style.paddingBottom = '4rem';
-          experienceSection.style.marginTop = '6rem';
-          experienceSection.style.paddingTop = '4rem';
+          aboutSection.style.marginBottom = '3rem';
+          aboutSection.style.paddingBottom = '2rem';
+          aboutSection.style.marginTop = '3rem';
+          experienceSection.style.marginTop = '3rem';
+          experienceSection.style.paddingTop = '2rem';
+        }
+        
+        // Cập nhật layout avatar khi thay đổi kích thước
+        const profileSection = document.getElementById('profile');
+        const picContainer = profileSection.querySelector('.section__pic-container');
+        const avatarListContainer = document.querySelector('.avatar-list-container');
+        
+        // Đảm bảo các phần tử có đủ không gian trên điện thoại
+        if (window.innerWidth <= 480) {
+          profileSection.style.height = 'auto';
+          profileSection.style.paddingTop = '2rem';
+          profileSection.style.paddingBottom = '2rem';
+          
+          picContainer.style.height = 'auto';
+          picContainer.style.marginBottom = '1rem';
+          
+          avatarListContainer.style.width = '90%';
+        } else if (window.innerWidth <= 600) {
+          profileSection.style.height = 'auto';
+          profileSection.style.paddingBottom = '1.5rem';
+          
+          picContainer.style.height = 'auto';
+          picContainer.style.marginBottom = '1rem';
+        } else if (window.innerWidth <= 768) {
+          profileSection.style.height = 'auto';
+          picContainer.style.marginBottom = '1.5rem';
         }
       });
+    </script>
+    <!-- Script bổ sung để đảm bảo khoảng cách giữa các project -->
+    <script>
+      // Hàm áp dụng khoảng cách giữa các project
+      function applyProjectSpacing() {
+        // Lấy tất cả các phần tử project
+        const projectItems = document.querySelectorAll('.project-item, .project-card');
+        
+        // Áp dụng khoảng cách dựa trên kích thước màn hình
+        projectItems.forEach(function(item) {
+          if (window.innerWidth <= 480) {
+            // Điện thoại: khoảng cách 5rem
+            item.style.marginBottom = '5rem';
+            item.setAttribute('style', 'margin-bottom: 5rem !important; padding-bottom: 2rem !important');
+          } else if (window.innerWidth <= 768) {
+            // Tablet: khoảng cách 4rem
+            item.style.marginBottom = '4rem';
+            item.setAttribute('style', 'margin-bottom: 4rem !important; padding-bottom: 1rem !important');
+          } else {
+            // Desktop: khoảng cách 2.5rem
+            item.style.marginBottom = '2.5rem';
+            item.setAttribute('style', 'margin-bottom: 2.5rem !important');
+          }
+        });
+        
+        // Điều chỉnh khoảng cách grid
+        const gridContainer = document.querySelector('.projects-grid-container');
+        if (gridContainer) {
+          if (window.innerWidth <= 480) {
+            gridContainer.style.rowGap = '5rem';
+            gridContainer.style.gap = '5rem';
+          } else if (window.innerWidth <= 768) {
+            gridContainer.style.rowGap = '4rem';
+            gridContainer.style.gap = '4rem';
+          } else {
+            gridContainer.style.rowGap = '3rem';
+            gridContainer.style.gap = '3rem';
+          }
+        }
+      }
+      
+      // Gọi hàm ngay khi script được tải
+      applyProjectSpacing();
+      
+      // Và gọi lại khi cửa sổ thay đổi kích thước
+      window.addEventListener('resize', applyProjectSpacing);
+      
+      // Gọi hàm lại sau khi trang đã tải hoàn toàn
+      window.addEventListener('load', applyProjectSpacing);
     </script>
   </body>
 </html>
